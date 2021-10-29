@@ -1,0 +1,613 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix { height: auto; margin-top: 16px; margin-bottom: 16px; }
+.md-require-zoom-fix foreignObject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+
+/*
+ * Default theme，适用于 core/mweb-base.scss。
+ * 取值参考 chrome 默认样式：
+ * https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/html.css
+ * 所有 import "core/mweb-base.scss" 的文件都应该同时导入此变量文件。
+ */
+/* color */
+/* font & line */
+/* boxing */
+/* elememts */
+/* color */
+/* prism & pre */
+/* font */
+/* header */
+/* spacing */
+/* table */
+/*
+ * 基准样式，相当于 reset.css，使主题在不同平台下有统一的表现。
+ * 各个属性的默认值为 chrome 的默认样式，见 variables/default.scss。
+ */
+:root {
+  --text-color: #1f2329;
+  --bg-color: white;
+  --side-bar-bg-color: white;
+  --active-file-bg-color: white;
+  --rawblock-edit-panel-bd: #f5f6f7;
+  --window-border: 0 solid white;
+  --control-text-color: #1f2329;
+  --primary-color: #3370ff;
+  --primary-btn-border-color: #3370ff;
+  --active-file-border-color: #3370ff;
+  --primary-btn-text-color: #3370ff;
+  --item-hover-text-color: #3370ff;
+  --meta-content-color: #3370ff;
+  --search-select-text-color: #3370ff;
+  --heading-char-color: #3370ff;
+  /* Mermaid diagrams*/
+  --mermaid-theme: default;
+}
+
+#write {
+  line-height: 1.68;
+  -webkit-text-size-adjust: 100%;
+  max-width: 860px;
+  margin: 0px auto;
+  padding: 1.6rem 3.2rem;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, Segoe UI, PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 16px;
+  color: #1f2329;
+  /* spacing */
+  /* block */
+  /* list */
+  /* inline */
+  /* table */
+  /* code block */
+}
+#write * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#write > *:first-child {
+  margin-top: 0 !important;
+}
+#write > *:last-child {
+  margin-top: 0 !important;
+}
+#write p, #write details, #write dl, #write ol, #write ul, #write xmp, #write plaintext, #write listing, #write blockquote, #write table, #write figure, #write hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+#write h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 26px;
+  margin-bottom: 10px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h5 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write h6 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+#write p {
+  margin-left: 0;
+  margin-right: 0;
+}
+#write pre, #write xmp, #write plaintext, #write listing {
+  font-family: var(--monospace);
+}
+#write blockquote > :first-child {
+  margin-top: 0;
+}
+#write blockquote > :last-child {
+  margin-bottom: 0;
+}
+#write hr {
+  border-style: inset;
+  border-width: 1px;
+}
+#write img {
+  max-width: 100%;
+  height: auto;
+}
+#write li {
+  word-wrap: break-all;
+}
+#write li + li {
+  margin-top: 4px;
+}
+#write ul ul, #write ol ul, #write ul ol, #write ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#write .task-list-item {
+  list-style-type: none;
+}
+#write a {
+  color: #3370ff;
+  text-decoration: underline;
+}
+#write a img {
+  border: none;
+}
+#write b, #write strong {
+  font-weight: bold;
+}
+#write i, #write cite, #write em, #write var, #write address, #write dfn {
+  font-style: italic;
+}
+#write code, #write kbd, #write tt, #write samp {
+  font-family: var(--monospace);
+}
+#write mark {
+  color: #1f2329;
+  padding: 0.2em 0;
+  background-color: rgba(255, 246, 122, 0.8);
+}
+#write del, #write s {
+  color: inherit;
+}
+#write table {
+  color: black;
+  border-collapse: collapse;
+  background-color: white;
+  border-spacing: 2px;
+  font-size: 1em;
+}
+#write th, #write td {
+  border-color: #dee0e3;
+  border-width: 1px;
+  border-style: solid;
+}
+#write th {
+  padding: 8px 8px;
+  font-size: 1em;
+  font-weight: 500;
+}
+#write td {
+  padding: 8px 8px;
+  font-size: 1em;
+  font-weight: normal;
+}
+#write pre.md-fences,
+#write pre.md-meta-block,
+#write .md-rawblock-control:not(.md-rawblock-tooltip) .md-rawblock-input {
+  border-radius: 3px;
+  border: 1px solid #dee0e3;
+  padding: 10px;
+  background-color: #f5f6f7;
+}
+#write .CodeMirror div.CodeMirror-cursor {
+  border-color: #1f2329;
+}
+#write .md-math-block, #write .md-rawblock {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+#write .md-rawblock > .md-rawblock-tooltip {
+  background-color: #f5f6f7;
+  transition: 0.5s;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+}
+#write .md-rawblock:hover > .md-rawblock-tooltip {
+  transition: 0.5s;
+  visibility: visible;
+  opacity: 1;
+  animation: none;
+}
+#write .md-rawblock-control:not(.md-rawblock-tooltip) {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#write * {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+  line-height: 1.4;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0.37em;
+}
+#write blockquote {
+  display: block;
+  margin-left: 0;
+  padding-left: 14px;
+  border-left: 2px solid #3370ff;
+  color: rgba(31, 35, 41, 0.7);
+}
+#write code {
+  border-radius: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border: 1px solid #dee0e3;
+  background-color: #f5f6f7;
+  word-spacing: normal;
+  line-height: 1.6;
+  padding: 0 2px;
+}
+#write a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  hyphens: auto;
+  word-break: break-word;
+  text-decoration: none;
+}
+#write a:hover {
+  text-decoration: underline;
+}
+#write hr {
+  margin: 13px 0 12px;
+  border: 0px;
+  height: 1px;
+  background-origin: content-box;
+  background-image: linear-gradient(90deg, #bbbfc4, #bbbfc4);
+  background-repeat: no-repeat;
+}
+#write ul {
+  margin-left: 0;
+  padding-left: 22px;
+  list-style: none;
+}
+#write ul > li:not([class*=task-list-item]) {
+  word-wrap: break-all;
+  padding-left: 0px;
+}
+#write ul > li:not([class*=task-list-item]):before {
+  position: absolute;
+  top: 2px;
+  content: "•";
+  color: #3370ff;
+  display: inline-block;
+  margin-left: -20px;
+  margin-right: 20px;
+  width: 0px;
+  font-size: 0.8em;
+  transform: scale(1.25);
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+#write ul > li:not([class*=task-list-item]) li:not([class*=task-list-item])::before {
+  content: "◦";
+  transform: scale(1);
+  font-weight: 700;
+}
+#write ul > li:not([class*=task-list-item]) li:not([class*=task-list-item]) li:not([class*=task-list-item])::before {
+  content: "▪";
+  transform: scale(1.25);
+  font-weight: normal;
+}
+#write ol {
+  counter-reset: ol_counter;
+  margin-left: 0;
+  padding-left: 22px;
+  list-style: none;
+}
+#write ol > li:not([class*=task-list-item]) {
+  word-wrap: break-all;
+  padding-left: 0px;
+  position: relative;
+}
+#write ol > li:not([class*=task-list-item]):before {
+  content: counter(ol_counter) ".";
+  counter-increment: ol_counter;
+  color: #3370ff;
+  position: absolute;
+  margin-left: -22px;
+  margin-right: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 18px;
+  border-radius: 2px;
+  transform: translateX(-2px);
+  font-family: Helvetica Neue, Consolas;
+}
+#write li + li, #write ul ul, #write ol ul, #write ul ol, #write ol ol, #write li ul, #write li ol {
+  margin-top: 4px;
+}
+#write .task-list-item {
+  padding-left: 0.3rem;
+}
+#write .task-list-item > p {
+  transition: color 0.3s, opacity 0.3s;
+}
+#write .task-list-item.task-list-done > p {
+  color: #646a73;
+  text-decoration: line-through;
+}
+#write .task-list-item.task-list-done > p > .md-emoji {
+  opacity: 0.5;
+}
+#write .task-list-item.task-list-done > p > .md-link > a {
+  opacity: 0.6;
+}
+#write .task-list-item > input {
+  -webkit-appearance: initial;
+  display: block;
+  position: absolute;
+  border: 1px solid #2b2f36;
+  border-radius: 0.25rem;
+  margin-left: -1.5rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  transition: border-color 0.3s;
+}
+#write .task-list-item > input:focus {
+  outline: none;
+  box-shadow: none;
+}
+#write .task-list-item > input:hover {
+  border-color: #3370ff;
+}
+#write .task-list-item > input[checked]::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 60%;
+  width: 2px;
+  transform: rotate(40deg);
+  background: #3370ff;
+}
+#write .task-list-item > input[checked]::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 25%;
+  height: 30%;
+  width: 2px;
+  transform: rotate(-40deg);
+  background: #3370ff;
+}
+
+#write strong {
+  color: #245bdb;
+}
+
+ :root {--mermaid-font-zoom:1em ;}  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>模拟项目概要设计V2</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='模拟项目概要设计v2-郭韬'><span>模拟项目概要设计V2-郭韬</span></h1><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#模拟项目概要设计v2-郭韬">模拟项目概要设计V2-郭韬</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#1-需求描述">1. 需求描述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n8"><a class="md-toc-inner" href="#2-整体架构">2. 整体架构</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" href="#3-模块设计">3. 模块设计</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n16"><a class="md-toc-inner" href="#31-蓝牙管理类btmanager）">3.1 蓝牙管理类（BTManager）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n21"><a class="md-toc-inner" href="#32-蓝牙数据解析类btparser）">3.2 蓝牙数据解析类（BTParser）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#33-model类">3.3 Model类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n63"><a class="md-toc-inner" href="#34-viewcontroller类">3.4 ViewController类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n32"><a class="md-toc-inner" href="#35-工具类tools）">3.5 工具类（Tools）</a></span></p></div><p>&nbsp;</p><h2 id='1-需求描述'><span>1. 需求描述</span></h2><p><span>针对开发过程中有时缺少真实硬件外设测试的场景，开发一款测试APP，基于ios蓝牙外设开发模式，可任意选取设备类型并进行模拟，可以发出蓝牙广播并和vesync配网成功，针对用蓝牙进行数据交互的外设类型（如体脂秤），需要完整模拟其和vesync的数据交互，如上报当前称重数据和vesync同步设置时间到体脂秤等。</span></p><p>&nbsp;</p><h2 id='2-整体架构'><span>2. 整体架构</span></h2><p><span>项目整体采用MVVM架构，其中底层为通用的蓝牙工具类，只负责发送蓝牙广播和建立蓝牙连接，此外还需要控制数据收发的解析类，用于解析vesync端下发数据和拼装本地上发数据包，再往上到model层，根据是否有蓝牙数据传输和产品功能分为几个大类，再往上的viewmodel和viewcontroller也根据model大类来分别设计，数据的双向绑定通过RxSwift实现，具体结构如下图所示：</span></p><p><img src="/Users/guotao/Downloads/第二版架构图 (2).svg" referrerpolicy="no-referrer" alt="第二版架构图 (2)"></p><center>图2.1 整体架构图</center><p>&nbsp;</p><h2 id='3-模块设计'><span>3. 模块设计</span></h2><h3 id='31-蓝牙管理类btmanager）'><span>3.1 蓝牙管理类（BTManager）</span></h3><p><span>蓝牙管理类BTManager是继承自NSObject类的单例，通过在extension中加入CBPeripheralManagerDelegate实现蓝牙代理，蓝牙具体功能通过类型为CBPeripheralManager的成员变量peripheralManager来实现。BTManager在程序打开后全程保持运行，peripheralManager通过peripheralManagerDidUpdateState方法实时检测蓝牙状态，若本机蓝牙关闭则提示用户打开蓝牙，当蓝牙状态为可用即poweron时，开启定时器每秒发送一次蓝牙广播，设备链接订阅成功后回调方法中关闭广播定时器并开启心跳包定时器，在自定义的服务端口上发空数据保证不断连。具体的蓝牙控制流程如图所示：</span></p><p><img src="/Users/guotao/Downloads/蓝牙管理类.svg" referrerpolicy="no-referrer" alt="蓝牙管理类"></p><center>图3.1 蓝牙连接流程图</center><p><span>注意，BTManager本身不存储任何数据，只对蓝牙数据的收发做控制，数据来源是业务层用户的点击操作，包括设备信息和对应蓝牙指令信息，收发信息的解析和封装通过接口来交给BTParser类完成，BTManager只承担vesync端和BTParser间的数据通道功能，订阅成功、取消订阅、接受下发请求时会实时通知BTParser类传往业务层，业务层回复数据、主动上报时将原始数据传送至BTParser类处理，BTParser处理完毕后通知BTManager类发送加工后数据，大致数据交互如下图：</span></p><p><img src="/Users/guotao/Downloads/主体数据交互.svg" referrerpolicy="no-referrer" alt="主体数据交互"></p><center>图3.2 主体数据交互</center><p><span>PS：发送广播时的广播包格式为公司id➕设备mac地址➕设备型号，其中公司id固定，设备型号信息从上层model中获取，设备mac地址由于ios无法获取本机mac信息，可以采取随机生成和用户修改相结合的方式，将当前模拟的mac地址显示在主页，正常来说不会重复，不会影响正常的连接和数据收发。</span></p><p>&nbsp;</p><h3 id='32-蓝牙数据解析类btparser）'><span>3.2 蓝牙数据解析类（BTParser）</span></h3><p><span>相比于只负责蓝牙连接控制的BTManager，BTParser作为vesync和模拟APP业务层数据交互的中枢，承担了绝大多数的业务逻辑，但依然只存储少量和数据解析封装操作相关的字段信息，数据交互内容主要可以分为4块，蓝牙连接状态信息、设备模型状态信息、vesync请求和业务层封装数据指令，如下图所示：</span></p><p><img src="/Users/guotao/Downloads/BTParser主要功能.svg" referrerpolicy="no-referrer" alt="BTParser主要功能"></p><center>图3.3 BTParser功能结构</center><p><span>其中蓝牙连接状态信息是双向的，自下而上是订阅成功/失败的状态信息，自上而下是蓝牙连接和广播的开关指令；设备模型信息的获取主要来自于另一个单例工具类DeviceManager，在业务层进入设备主页时会将设备型号信息、广播服务信息、蓝牙指令信息和设备数据信息初始化为一个model并保存到DeviceManager中，方便BTParser后续获取设备信息。</span></p><p><span>对于vesync端的请求，BTParser先是判断数据包长度的合法性和对应指令是否存在，检验无误后按照统一格式进行解析，提取数据包中的重要信息即指令码、数据长度和包尾数据，将重要数据发送至viewModel层，viewModel层根据这些数据对model执行对应操作并将结果通知到viewcontroller中显示给用户。相对的，业务层的原始待封装数据只包括指令码、数据长度和数据包，传达到BTParser后再判断原始数据包长度合法性，检验无误后按照统一格式进行封装，目前的封装数据主要为回复、上报和广播3类，其中回复和上报十分相似，只不过回复要与请求一一对应，并且不用从vc层接受用户选定的指令码和数据。</span></p><p><span>一般情况下BTParser类不会有改动，除非新接入第三方产品的数据包格式跟vesync统一的数据包格式不同，则需要额外加一套解析规则。</span></p><p>&nbsp;</p><h3 id='33-model类'><span>3.3 Model类</span></h3><p><span>Model信息可分为设备型号信息、广播服务信息、蓝牙指令信息和设备数据信息4类，顺序越靠后的数据信息越高级（只有一部分设备会有），最低级的设备型号信息则是每个设备都有，从下到上依次过滤不支持对应信息的设备，如下图所示：</span></p><p><img src="/Users/guotao/Downloads/Model层级示意.svg" referrerpolicy="no-referrer" alt="Model层级示意"></p><center>图3.4 Model数据层级</center><p><span>其中底层的设备型号信息在最基础的同时，也是最特别的信息，每款设备的型号信息都不完全一致，其中可以再次提取到设备大类信息和设备小类信息，这里的设备小类为自己定义的概念，指广播服务和蓝牙指令相似的设备可归为一类，共用一套广播服务和蓝牙指令的model，设备小类的设备数据目前也可作为一套共用，但后续的更新升级可能会加入特定设备数据的持久化存储，届时需要用设备的真实设备名作为主键存储对应设备数据，还可以考虑加入账号登陆的机制，让账号id和设备名联合作为主键，存在云端数据库中，登陆模拟APP后发起请求从云端拉取设备数据。</span></p><p><span>model的蓝牙指令模块可以将每条指令对model的设备数据操作也涵盖进去，简化viewmodel的逻辑，只要默认给蓝牙指令的model在传入指令的同时传入核心数据即可，viewmodel在这里只充当model和vc的数据双向桥梁，负责监听和通知数据的变化。</span></p><h3 id='34-viewcontroller类'><span>3.4 ViewController类</span></h3><p><span>界面只涉及选择设备的主页和选择完设备后各设备的主页（配网信息或者指令数据传输），默认蓝牙开启，在部分设备主页中可以添加关闭蓝牙连接的按钮（如体脂秤的本地添加称重数据），只需对BTManager类的成员变量peripheralManager赋值nil和重新初始化即可，各设备的主页尽量用一页展示数据即可。</span></p><p><span>选择设备的APP主页参照vesync的Add Device页，左侧为产品大类，右侧为具体产品型号和图片，点击即可进入设备主页，界面上部区域用于显示和修改模拟设备的MAC地址，具体如下图所示：</span></p><p><img src="/Users/guotao/Downloads/APP主页示意图.svg" referrerpolicy="no-referrer" alt="APP主页示意图"></p><center>图3.5 APP主页示意图</center><p><span>配网结果提示页统一即可，即便没有提示页vesync端也可以查看到配网结果。设备主页则统一用tableview展示即可，每个cell代表一组设备数据，相似设备的cell可以复用，简化开发。</span></p><h3 id='35-工具类tools）'><span>3.5 工具类（Tools）</span></h3><p><span>整个类由静态方法组成，包括但不限于数据展示格式的转换、UTC时间戳的转换、随机MAC地址的生成和全机型的UI界面适配，还可以添加错误处理的方法、打印调试信息等。此外还将导入方家浩的日志抓取工具pod，实现脱离xcode真机测试的控制台日志显示，更加便于测试人员测试。</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
