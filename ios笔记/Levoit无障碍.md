@@ -18,7 +18,7 @@
 # 修改记录
 
 * 修改了VSSwitch的样式颜色⭐️ 需不需要加属性弄两套颜色？
-* 修改NavigationBar⭐️
+* 修改NavigationBar⭐️ 看看有无影响
 * 给VSAnimationButton新增了一种button图片⭐️
 * 设置页所有内容包括弹窗要切圆角，是公共模块
 * smart scene标题栏要替换
@@ -40,9 +40,9 @@
 * 净化器主页的auto档位图片似乎有问题
 * 接下来要改automodesetting的样式和净化器主页无障碍聚焦
 
+* 上下滑手势的代理
 
-
-
+* 净化器主页的上拉弹窗拉起后点击没有返回
 
 
 
